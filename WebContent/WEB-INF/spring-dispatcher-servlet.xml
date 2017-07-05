@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:p="http://www.springframework.org/schema/p"
+   xmlns:context="http://www.springframework.org/schema/context"
+   xmlns:mvc="http://www.springframework.org/schema/mvc"
+   xmlns:task="http://www.springframework.org/schema/task"
+   xmlns:util="http://www.springframework.org/schema/util"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans
+     http://www.springframework.org/schema/beans/spring-beans-4.3.xsd  
+     http://www.springframework.org/schema/context
+     http://www.springframework.org/schema/context/spring-context-4.3.xsd  
+     http://www.springframework.org/schema/mvc
+     http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+     http://www.springframework.org/schema/util/
+     http://www.springframework.org/schema/util/spring-util.xsd
+     http://www.springframework.org/schema/task
+     http://www.springframework.org/schema/task/spring-task-4.3.xsd"
+     >
+     
+  <mvc:annotation-driven/>
+  <mvc:default-servlet-handler/>
+  <context:component-scan base-package="controller" />
+  
+  
+  <!-- Internal Resolver -->
+  <bean
+      class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+      <property name="prefix">
+          <value>/WEB-INF/views/</value>
+      </property>
+      <property name="suffix">
+          <value>.jsp</value>
+      </property>        
+  </bean>
+  
+  <context:annotation-config />
+  
+  
+  <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+    <property name="favorPathExtension" value="false"/>
+    <property name="favorParameter" value="true"/>
+    <property name="mediaTypes">
+        <value>
+            json=application/json
+            xml=application/xml
+            html=text/html
+        </value>
+    </property>
+</bean>
+  
+  
+  <!-- Resources -->
+  <mvc:resources mapping="/resources/**" location="/WEB-INF/resources/"/>
+ 
+  
+  
+  
+</beans>

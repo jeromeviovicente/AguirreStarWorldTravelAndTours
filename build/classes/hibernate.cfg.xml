@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-configuration SYSTEM "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<!-- <property name="connection.url">jdbc:mysql://sql12.freemysqlhosting.net:3306/sql12181973</property> -->
+		<property name="connection.url">jdbc:mysql://localhost:3306/aswtdb</property> 
+		<property name="sslmode">true</property>
+		<!-- <property name="connection.username">sql12181973</property>
+		<property name="connection.password">CUYkITTltn</property> -->
+		<property name="connection.username">root</property>
+		<property name="connection.password"></property>
+		<property name="connection.pool_size">1</property>
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+		<property name="show_sql">false</property>
+		<property name="current_session_context_class">thread</property>
+		<property name="hbm2ddl.auto">update</property>
+		
+		<!-- Mention here all the table classes along its packages -->
+		<mapping class="tables.Accounts"/>
+		<mapping class="tables.Address"/>
+		<mapping class="tables.Admin"/>
+		<mapping class="tables.AdminSettings"/>
+		<mapping class="tables.Driver"/>
+		<mapping class="tables.Passenger"/>
+		<mapping class="tables.TransactionHistory"/>
+		<mapping class="tables.WorkingDetails"/>
+		
+	</session-factory>
+</hibernate-configuration>
