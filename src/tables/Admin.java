@@ -1,12 +1,13 @@
 package tables;
 
-import javax.persistence.Table;
+
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.NotEmpty;
 
 import java.io.Serializable;
 
+import javax.persistence.Table;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -57,9 +58,6 @@ public class Admin implements Serializable{
 	@JoinColumn(name="accountId")
 	private Accounts accounts;
 
-	
-	
-	
 	
 	public String getAdminId() {
 		return adminId;

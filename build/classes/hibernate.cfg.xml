@@ -23,9 +23,34 @@
 		<mapping class="tables.Admin"/>
 		<mapping class="tables.AdminSettings"/>
 		<mapping class="tables.Driver"/>
+		<mapping class="tables.MarkUp"/>
 		<mapping class="tables.Passenger"/>
+		<mapping class="tables.BusReservation"/>
 		<mapping class="tables.TransactionHistory"/>
+		<mapping class="tables.TransactionType"/>
 		<mapping class="tables.WorkingDetails"/>
+		
+		
+		
+		<!-- Tables below are for the values of portals only -->
+		
+		<!-- Git Tables -->
+		<mapping class="tables.GitCountry"/>
+		<mapping class="tables.GitFrom"/>
+		<mapping class="tables.GitTo"/>
+		
+		<!-- Fit / Land Tables -->
+		<mapping class="tables.FitOrLandCountry"/>
+		<mapping class="tables.FitOrLandTo"/>
+		
+		<!-- Tour Tables -->
+		<mapping class="tables.TourCountry"/>
+		
+		<!-- Domestic AirLines Tables -->
+		<mapping class="tables.DomesticAirLineOrigin"/>
+		<mapping class="tables.DomesticAirLineDestination"/>
+		<mapping class="tables.DomesticAirLineClass"/>
+		
 		
 	</session-factory>
 </hibernate-configuration>

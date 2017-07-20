@@ -2,14 +2,21 @@ package authenticaton;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.SessionAttributes;
+
+import bean.EmailAndRole;
 import crud.CRUD;
 import encryption.Decrypt;
 import tables.Accounts;
 
+
+
 public class Login {
 	private static boolean isAuth = false;
+	
+	private static EmailAndRole emailAndRole;
 
-	public static String Authenticate(String userName, String password) throws Exception{
+	public static String Authenticate(String email, String password) throws Exception{
 		
 		List<Accounts> account ;
 		
@@ -19,7 +26,7 @@ public class Login {
 		
 		byte[] iv = null;
 		
-		if((account = CRUD.GetAdminAccount(userName)).size() > 0){
+		if((account = CRUD.GetAdminAccount(email)).size() > 0){
 			
 			for(Accounts acc :account){
 				passwordToDecrypt = acc.getPassword();
@@ -32,6 +39,13 @@ public class Login {
 				System.out.println("login successful");
 				isAuth = true;
 				returnMessage = "Login successful";
+				
+				
+				for(Accounts as : account){
+					emailAndRole = new EmailAndRole(as.getEmail(), as.getRole());
+				}
+				
+				
 				return returnMessage;
 			}
 			else{
@@ -41,7 +55,7 @@ public class Login {
 				return returnMessage;
 			}
 		}
-		else if((account = CRUD.GetPassengerAccount(userName)).size() > 0){
+		else if((account = CRUD.GetPassengerAccount(email)).size() > 0){
 			
 			for(Accounts acc :account){
 				passwordToDecrypt = acc.getPassword();
@@ -54,6 +68,11 @@ public class Login {
 				System.out.println("login successful");
 				isAuth = true;
 				returnMessage = "Login successful";
+				
+				for(Accounts as : account){
+					emailAndRole = new EmailAndRole(as.getEmail(), as.getRole());
+				}
+				
 				return returnMessage;
 			}
 			else{
@@ -63,7 +82,7 @@ public class Login {
 				return returnMessage;
 			}
 		}
-		else if((account = CRUD.GetDriverAccount(userName)).size() > 0){
+		else if((account = CRUD.GetDriverAccount(email)).size() > 0){
 			
 			for(Accounts acc :account){
 				passwordToDecrypt = acc.getPassword();
@@ -76,6 +95,11 @@ public class Login {
 				System.out.println("login successful");
 				isAuth = true;
 				returnMessage = "Login successful";
+				
+				for(Accounts as : account){
+					emailAndRole = new EmailAndRole(as.getEmail(), as.getRole());
+				}
+				
 				return returnMessage;
 			}
 			else{
@@ -85,7 +109,7 @@ public class Login {
 				return returnMessage;
 			}
 		}
-		else if((account = CRUD.GetHomeOwnerAccount(userName)).size() > 0){
+		else if((account = CRUD.GetHomeOwnerAccount(email)).size() > 0){
 			
 			for(Accounts acc :account){
 				passwordToDecrypt = acc.getPassword();
@@ -98,6 +122,11 @@ public class Login {
 				System.out.println("login successful");
 				isAuth = true;
 				returnMessage = "Login successful";
+				
+				for(Accounts as : account){
+					emailAndRole = new EmailAndRole(as.getEmail(), as.getRole());
+				}
+				
 				return returnMessage;
 			}
 			else{
@@ -121,5 +150,10 @@ public class Login {
 	public static boolean isAuth(){
 		return isAuth;
 	}
+	
+	public static EmailAndRole getEmailAndRole(){
+		return emailAndRole;
+	}
+	
 	
 }

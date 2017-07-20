@@ -13,7 +13,7 @@ import crud.CRUD;
 import encryption.Encrypt;
 import encryption.GenerateIV;
 import enumerated.Role;
-import model.DriverModel;
+import model.RegisterDriverModel;
 import model.WorkingDetailsModel;
 import tables.Accounts;
 import tables.Driver;
@@ -24,20 +24,24 @@ public class RegisterDriverController {
 
 	@RequestMapping(value="/driver-reg")
 	public String RegisterDriver(){
+		System.out.println("driver form");
 		return "registerdriver";
 	}
 	
-	
-	
-	@RequestMapping(value="/driver-reg", method = RequestMethod.POST)
-	public ModelAndView RegisterDriver(@ModelAttribute("PassInfo") DriverModel dm, WorkingDetailsModel wdm, BindingResult result){
-		ModelAndView modelAndView = new ModelAndView("testresults");
+	@RequestMapping(value="/reg-driver", method = RequestMethod.POST)
+	public ModelAndView RegisterDriver(@ModelAttribute("PassInfo") RegisterDriverModel dm, WorkingDetailsModel wdm, BindingResult result){
+		ModelAndView modelAndView = new ModelAndView("testloginresults");
+		System.out.println("driver process");
+		
+		if(result.hasFieldErrors()){
+			System.out.println(result.getAllErrors());
+		}
+		
 		
 		String message = "";
 		Accounts account = new Accounts();
 		Driver driver = new Driver();
 		WorkingDetails workingDetails = new WorkingDetails();
-		account.setUserName(dm.getUserName());
 		account.setRole(Role.DRIVER.toString());
 		try {
 			new GenerateIV();
@@ -61,10 +65,10 @@ public class RegisterDriverController {
 		driver.setAge(dm.getAge());
 		driver.setCurrentCity(dm.getCurrentCity());
 		driver.setHomeProvince(dm.getHomeProvince());
-		driver.setMobileNumber(dm.getMobileNumber());
+		driver.setContactNumber(String.valueOf(dm.getMobileNumber()));
 		driver.setAccounts(account);
 		
-		workingDetails.setWorkingCities(wdm.getWorkingCities());
+		workingDetails.setWorkingCities(wdm.getWorkingCity());
 		workingDetails.setWorkingProvince(wdm.getWorkingProvince());
 		workingDetails.setWorkingBarangay(wdm.getWorkingBarangay());
 		workingDetails.setWorkingSubdivision(wdm.getWorkingSubdivision());
@@ -86,6 +90,7 @@ public class RegisterDriverController {
 			message = "Exception rule, \n"+ e.getMessage();
 		}
 		modelAndView.addObject("message", message);
+		
 		return modelAndView;
 	}
 }

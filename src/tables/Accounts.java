@@ -27,10 +27,6 @@ public class Accounts implements Serializable{
 	private String accountId;
 	
 	@NotEmpty
-	@Column(name = "userName", unique = true)
-	private String userName;
-	
-	@NotEmpty
 	@Column(name = "password", nullable = false)
 	private String password;
 	
@@ -63,7 +59,8 @@ public class Accounts implements Serializable{
 	private Set<AdminSettings> settings;
 	
 	@OneToMany(mappedBy = "accounts")
-	private Set<MarkUp> markup;
+	private Set<BusReservation> busReservation;
+	
 	
 	public String getAccountId() {
 		return accountId;
@@ -72,15 +69,7 @@ public class Accounts implements Serializable{
 	public void setAccountId(String accountId) {
 		this.accountId = accountId;
 	}
-
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
+	
 	public String getPassword() {
 		return password;
 	}
@@ -153,12 +142,12 @@ public class Accounts implements Serializable{
 		this.settings = settings;
 	}
 
-	public Set<MarkUp> getMarkup() {
-		return markup;
+	public Set<BusReservation> getBusReservation() {
+		return busReservation;
 	}
 
-	public void setMarkup(Set<MarkUp> markup) {
-		this.markup = markup;
+	public void setBusReservation(Set<BusReservation> busReservation) {
+		this.busReservation = busReservation;
 	}
 	
 	

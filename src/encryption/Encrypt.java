@@ -15,6 +15,7 @@ public class Encrypt {
         byte[] encryptedByteValue = cipher.doFinal(dataToEncrypt.getBytes());
         
         String encryptedStringValue = new BASE64Encoder().encode(encryptedByteValue);
+        
         return encryptedStringValue;
     }
 }

@@ -19,17 +19,21 @@ import com.gargoylesoftware.htmlunit.html.HtmlForm;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.gargoylesoftware.htmlunit.html.HtmlSubmitInput;
 import com.gargoylesoftware.htmlunit.html.HtmlTextInput;
+
+import portals.TravelliancePortal;
+import portals.WTVPortal;
+
 import com.gargoylesoftware.htmlunit.html.HtmlPasswordInput;
 
 @Controller
 public class TestController {
-
-	@RequestMapping(value="/test"/*, produces = MediaType.TEXT_HTML_VALUE*/)
+/*
+	@RequestMapping(value="/test", produces = MediaType.TEXT_HTML_VALUE)
 	@ResponseBody
     public String helloWorld(HttpServletResponse response) throws Exception {
 		
-		/*response.setContentType("text/html");
-	    response.setCharacterEncoding("UTF-8");*/
+		response.setContentType("text/html");
+	    response.setCharacterEncoding("UTF-8");
 		
 		WebClient webClient = new WebClient();
 		
@@ -63,7 +67,16 @@ public class TestController {
 	    //webClient.waitForBackgroundJavaScript(50000);
 	    
         return authpage;
-    }
+    }*/
+	
+	/*@RequestMapping(value="/domestic")
+	@ResponseBody
+	public String Domestic() throws Exception {
+		//WTVPortal.Login();
+		
+		return WTVPortal.AirDomestic();
+	}*/
+	
 	
 	
 	

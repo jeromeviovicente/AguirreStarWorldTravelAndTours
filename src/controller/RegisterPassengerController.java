@@ -55,7 +55,6 @@ public class RegisterPassengerController {
 			Passenger passenger = new Passenger();
 			Accounts account = new Accounts();
 
-			account.setUserName(rmp.getUserName());
 			try {
 				new GenerateIV();
 				byte[] iv = GenerateIV.getIV();

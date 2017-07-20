@@ -23,6 +23,7 @@ public class KeyAndAlgoValue {
 		Properties prop = new Properties();
 		ClassLoader loader = Thread.currentThread().getContextClassLoader();    
 
+		
 		InputStream inputStream = loader.getResourceAsStream("config.properties");
 		prop.load(inputStream);
 

@@ -66,10 +66,6 @@ public class Driver implements Serializable{
 	@Column(name = "homeProvince", nullable = false)
 	private String homeProvince;
 	
-	@NotEmpty @Size(min=11, max=11)
-	@Column(name = "mobileNumber", nullable = false)
-	private int mobileNumber;
-	
 	/*
 	@OneToMany(mappedBy = "driver")
 	private Set<Address> address;
@@ -167,13 +163,6 @@ public class Driver implements Serializable{
 		this.homeProvince = homeProvince;
 	}
 
-	public int getMobileNumber() {
-		return mobileNumber;
-	}
-
-	public void setMobileNumber(int mobileNumber) {
-		this.mobileNumber = mobileNumber;
-	}
 
 	public String getContactNumber() {
 		return contactNumber;

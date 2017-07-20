@@ -1,8 +1,8 @@
 package model;
 
 public class WorkingDetailsModel {
-private String workingCities;
 	
+	private String workingCities;
 	private String workingCity;
 	private String workingBarangay;
 	private String workingSubdivision;

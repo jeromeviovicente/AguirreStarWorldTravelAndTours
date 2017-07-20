@@ -21,13 +21,17 @@ import encryption.Decrypt;
 import encryption.Encrypt;
 import encryption.GenerateIV;
 import encryption.GenereateCryption;
-
+import portals.TravelliancePortal;
+import portals.WTVPortal;
+import properties.PropertyFiles;
 import tables.Accounts;
 import tables.Address;
 import tables.Admin;
 import tables.AdminSettings;
 import tables.Driver;
+import tables.MarkUp;
 import tables.Passenger;
+import tables.PassengerApplicationHistory;
 import tables.TransactionHistory;
 import tables.WorkingDetails;
 import util.Date;
@@ -36,41 +40,23 @@ public class MainForTesting {
 
 	public static void main(String[] args) throws Exception{
 		
-		//Login.AsPassenger("NewAccount", "PASSW)RD");
+		
 		//testDatabaseCreatingTables();
 		//genSecretKey();
 		//testGenerateCryption();
 		
+		//System.out.println(WTVPortal.AirDomestic());
+		//System.out.println(WTVPortal.SearchDomesticAirLines());
 		
+		//WTVPortal.UpdateDomesticAirLines();
+		//PropertyFiles.AppendPropertyFile();
 		
+		//System.out.println(TravelliancePortal.Login());
 		
-		/*WebClient webClient = new WebClient();
-		
-		webClient = new WebClient(BrowserVersion.CHROME);
-		webClient = new WebClient(BrowserVersion.FIREFOX_52); // depending on HtmlUnit version
-		 	
-		
-		HtmlPage currentPage = webClient.getPage("http://202.54.157.7/WTVholidaysandtours/BKWLTOlogin.aspx");
-		
-		final HtmlForm form = currentPage.getFormByName("aspnetForm");
-		
-		
-		final HtmlTextInput terminalId = form.getInputByName("ctl00$cpg$txtterminalid");
-		terminalId.setValueAttribute("PHMNL029737200");
-		
-		final HtmlTextInput userId = form.getInputByName("ctl00$cpg$txtloginid");
-		userId.setValueAttribute("cjaguirre");
-		
-	    final HtmlPasswordInput password = form.getInputByName("ctl00$cpg$txtpassword") ;
-	    password.setValueAttribute("182314cat");
-		
-	    final HtmlSubmitInput button = form.getInputByName("ctl00$cpg$btnlogin");
-	     
-	    final HtmlPage page2 = button.click();
-
-	    
-	    
-		System.out.println(page2.getWebResponse().getContentAsString());*/
+		//TravelliancePortal.Git();
+		//TravelliancePortal.UpdateGit();
+		//TravelliancePortal.UpdateLand();
+		//TravelliancePortal.UpdateTour();
 	}
 	
 	
@@ -80,19 +66,21 @@ public class MainForTesting {
 	private static void testDatabaseCreatingTables() throws Exception{
 		Session session = DatabaseSession.getInstance();
 		session.beginTransaction();
-
+		
 		Accounts accounttable = new Accounts();
+		Address addresstable = new Address();
 		Admin admintable = new Admin();
 		AdminSettings setting = new AdminSettings();
 		Driver drivertable  = new Driver();
+		MarkUp markuptable = new MarkUp();
 		Passenger passengertable = new Passenger();
-		Address addresstable = new Address();
+		PassengerApplicationHistory applicationhistorytable = new PassengerApplicationHistory();
 		WorkingDetails workingdetailstable = new WorkingDetails();
 		TransactionHistory history = new TransactionHistory();
 		
 		
 
-		for(int loop = 0; loop < 6; loop++){
+		for(int loop = 0; loop < 10; loop++){
 			if(loop == 0){
 				session.save(accounttable);
 				session.getTransaction().commit();
@@ -102,26 +90,34 @@ public class MainForTesting {
 				session.getTransaction().commit();
 			}
 			if(loop == 2){
-				session.save(setting);
-				session.getTransaction().commit();
-			}
-			if(loop == 3){
-				session.save(drivertable);
-				session.getTransaction().commit();
-			}
-			if(loop == 4){
-				session.save(passengertable);
-				session.getTransaction().commit();
-			}
-			if(loop == 5){
 				session.save(addresstable);
 				session.getTransaction().commit();
 			}
+			if(loop == 3){
+				session.save(setting );
+				session.getTransaction().commit();
+			}
+			if(loop == 4){
+				session.save(drivertable);
+				session.getTransaction().commit();
+			}
+			if(loop == 5){
+				session.save(markuptable);
+				session.getTransaction().commit();
+			}
 			if(loop == 6){
-				session.save(workingdetailstable);
+				session.save(passengertable);
 				session.getTransaction().commit();
 			}
 			if(loop == 7){
+				session.save(applicationhistorytable);
+				session.getTransaction().commit();
+			}
+			if(loop == 8){
+				session.save(workingdetailstable);
+				session.getTransaction().commit();
+			}
+			if(loop == 8){
 				session.save(history);
 				session.getTransaction().commit();
 			}

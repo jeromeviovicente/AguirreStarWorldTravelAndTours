@@ -29,8 +29,7 @@ public class TransactionHistory {
 	@Column(name = "transaction", nullable = false)
 	private String transaction;
 	
-	@NotEmpty
-	@Column(name = "amount", nullable = false, columnDefinition="Decimal(10,2) default '00.00'")
+	@Column(name = "amount", columnDefinition="Decimal(10,2) default '00.00'")
 	private float amount;
 	
 	@ManyToOne
@@ -60,7 +59,6 @@ public class TransactionHistory {
 	public void setTransaction(String transaction) {
 		this.transaction = transaction;
 	}
-	
 
 	public float getAmount() {
 		return amount;
@@ -77,6 +75,6 @@ public class TransactionHistory {
 	public void setAccounts(Accounts accounts) {
 		this.accounts = accounts;
 	}
-	
+
 	
 }

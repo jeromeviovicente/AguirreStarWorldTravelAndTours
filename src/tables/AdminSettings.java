@@ -37,7 +37,7 @@ public class AdminSettings {
 	private String reason;
 	
 	@ManyToOne
-	@JoinColumn(name="setBy")
+	@JoinColumn(name="accountId")
 	private Accounts accounts;
 
 	public long getId() {
